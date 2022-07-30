@@ -21,7 +21,6 @@ export default class _Document extends Document {
     return (
       <Html dir="rtl">
         <Head>
-          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
           <link rel="shortcut icon" href="/favicon.svg" />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
