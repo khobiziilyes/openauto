@@ -12,6 +12,7 @@ import {
 } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import { rtlCache } from '../rtl-cache';
+import { OpenAppShell } from '../components/OpenAppShell/OpenAppShell';
 
 const TextInputDefaultProps: Partial<TextInputProps> = {
   required: true,
@@ -36,11 +37,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     dir: 'rtl',
     fontFamily: 'Almarai',
     fontSizes: {
-      xs: 60,
-      sm: 60,
+      xs: 13,
+      sm: 20,
       md: 25,
       lg: 60,
-      xl: 60,
+      xl: 20,
     },
     headings: {
       fontFamily: 'Almarai',
@@ -57,7 +58,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={theme} emotionCache={rtlCache} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
-            <Component {...pageProps} />
+            <OpenAppShell>
+              <Component {...pageProps} />
+            </OpenAppShell>
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>

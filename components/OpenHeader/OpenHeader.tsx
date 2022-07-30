@@ -1,18 +1,46 @@
-import { Header, Group, ActionIcon, useMantineColorScheme } from '@mantine/core';
+import {
+  Header,
+  Group,
+  ActionIcon,
+  useMantineColorScheme,
+  Text,
+  Burger,
+  MediaQuery,
+  useMantineTheme,
+} from '@mantine/core';
 import { SunIcon, MoonIcon } from '@modulz/radix-icons';
 
-export function OpenHeader() {
+export function OpenHeader({
+  isDrawerOpen,
+  toggleDrawer,
+}: {
+  isDrawerOpen: boolean;
+  toggleDrawer: () => void;
+}) {
+  const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
     <Header height={60}>
       <Group sx={{ height: '100%' }} px={20} position="apart">
-        <div>المنصة الأولى لبيع و شراء السيارات في الجزائر</div>
+        <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+            <Burger
+              opened={isDrawerOpen}
+              onClick={() => toggleDrawer()}
+              size="sm"
+              color={theme.colors.gray[6]}
+              mr="xl"
+            />
+          </MediaQuery>
+
+          <Text variant="gradient">المنصة الأولى لبيع و شراء السيارات في الجزائر</Text>
+        </div>
 
         <ActionIcon
           onClick={() => toggleColorScheme()}
           size="xl"
-          sx={(theme) => ({
+          sx={() => ({
             backgroundColor:
               theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
             color: theme.colorScheme === 'dark' ? theme.colors.yellow[4] : theme.colors.blue[6],
